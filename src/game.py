@@ -2,17 +2,23 @@ import pygame
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 
-running = True
+class Player:
+    def __init__(self, x:int, y:int, size:int):
+        self.x = x
+        self.y = y
+        self.size = size
+        
 
-player_x = 100
-player_y = 100
-player_size = 50
+
+
+running = True
+player = Player(100,100,50)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     screen.fill((0,0,0))
-    pygame.draw.rect(screen, (255,255,255), (player_x,player_y,player_size,player_size))
+    pygame.draw.rect(screen, (255,255,255), (player.x,player.y,player.size,player.size))
     pygame.display.update()
 pygame.quit()
 
