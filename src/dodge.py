@@ -64,7 +64,7 @@ SIMBOLI = {
 
 TEMPI_RIVALSA = {
     "RIVALSA_ADD": 600,
-    "RIVALSA_MULT": 420,
+    "RIVALSA_MULT": 500,
     "RIVALSA_DIV": 300,
 }
 
@@ -75,8 +75,8 @@ def genera_problema(tipo):
         b = random.randint(1, 100)
         return a, b, a + b
     if tipo == "RIVALSA_MULT":
-        a = random.randint(2, 50)
-        b = random.randint(2, 20)
+        a = random.randint(2, 15)
+        b = random.randint(2, 15)
         return a, b, a * b
     if tipo == "RIVALSA_DIV":
         b = random.randint(2, 20)

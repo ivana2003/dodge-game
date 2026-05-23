@@ -8,7 +8,7 @@ COLS = SCREEN_WIDTH // CELL
 ROWS = SCREEN_HEIGHT // CELL
 
 MOVE_DELAY = 8
-MELE_PER_WORDLE = 3
+MELE_PER_WORDLE = 20
 
 PAROLE_WORDLE = [
     "GATTO", "TIGRE", "LIBRO", "CARTA", "ROSSO",
@@ -68,14 +68,21 @@ def genera_cibo(snake_body):
 
 
 def colora_tentativo(tentativo, parola):
-    colori = []
-    for i, lettera in enumerate(tentativo):
-        if lettera == parola[i]:
-            colori.append((90, 170, 90))
-        elif lettera in parola:
-            colori.append((200, 170, 70))
-        else:
-            colori.append((70, 70, 70))
+    colori = [None] * 5
+    disponibili = list(parola)
+
+    for i in range(5):
+        if tentativo[i] == parola[i]:
+            colori[i] = (90, 170, 90)
+            disponibili[i] = None
+
+    for i in range(5):
+        if colori[i] is None:
+            if tentativo[i] in disponibili:
+                colori[i] = (200, 170, 70)
+                disponibili[disponibili.index(tentativo[i])] = None
+            else:
+                colori[i] = (70, 70, 70)
     return colori
 
 
